@@ -28,13 +28,10 @@
 
 [34. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
-思路：通过控制指针的走向，逼近左右边界；
-
-找左边界：当 midValue == target 时，需要继续把右指针往左移动;  left 指针就是找到的左边界
-
-找右边界：当 midValue == target 时，需要继续把左指针往右移动；right指针找到的就是右边界
+思路：通过二分法，找两遍，分别找到左右边界；找左边界和右边界时控制 == 时指针的走向
 
 当找完左边界时就可以进行校验，因为 左边界可能出现 没找到值 或者 left比数组长度大 (因为 midIndex + 1 的操作)；看需不需要继续找右边界
+不需要考虑找左边界的时候 会不会找到 元素组中点往右的元素，因为结果的范围不一定是中点往外扩散的
 
 
 
@@ -869,7 +866,23 @@ Row 在参数中制定，col 在回溯中指定
 [39. 组合总和](https://leetcode.cn/problems/combination-sum/)
 
 需要 startIndex 减枝，不然会有重复结果
-
+在回溯中：
+如果需要重复元素就是：
+```java
+  for (int i = start; i < candidates.length; i++) {
+      path.add(candidates[i]);
+      backtrack(candidates, path, i, target - candidates[i]);
+      path.remove(path.size() - 1);
+  }
+```
+如果不需要重复元素就是：
+```java
+  for (int i = start; i < candidates.length; i++) {
+      path.add(candidates[i]);
+      backtrack(candidates, path, i + 1, target - candidates[i]);
+      path.remove(path.size() - 1);
+  }
+```
 
 
 [22. 括号生成](https://leetcode.cn/problems/generate-parentheses/)
