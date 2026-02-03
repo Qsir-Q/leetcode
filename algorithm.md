@@ -1274,17 +1274,8 @@ class Solution {
     public String longestPalindrome(String s) {
         boolean[][] dp = new boolean[s.length()][s.length()];
         String resStr = "";
-        // dp[i][j] 的含义是 在字符串 s 中的 [i][j]区间 是否是 回文字符串
-        // 而判断 [i,j] 是不是字符串，就需要两个条件
-        // 1. s.charAt(i) == s.charAt(j)
-        // 2. [i+1,j-1] 也是回文字符串
-        // 因为 dp[i+1][j-1] 在 dp[i][j] 的下一层  所以遍历顺序从下往上
-        // 因为 dp[i+1][j-1] 在 dp[i][j] 的左一层  所以遍历顺序从左往右
         for (int i = s.length() - 1; i >= 0; i--) {
-          // 因为 dp[i][j] 表示的是区间 [i, j]，而区间必须满足 j ≥ i
             for (int j = i; j <= s.length() - 1; j++) {
-                // j - i <= 1：判断 i,j 是否是同一个字符或相邻字符
-                // dp[i + 1][j - 1] 判断中间区间是否是回文串
                 if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1]))
                     dp[i][j] = true;
                 if (dp[i][j] == true && (j - i + 1) > resStr.length()) {
