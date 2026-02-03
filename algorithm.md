@@ -1655,23 +1655,21 @@ public int[] insertionSort(int[] nums) {
 选定一个基点；把比基点小的放到左边，比基点大的放到右边；然后把 基点放到中间的位置，因为只承诺左右两边比base大或者小，所以换了不会导致乱序
 
 ```java
-public class QuickSort {
-
-    public static void quickSort(int[] nums, int left, int right) {
-        if (left >= right) {
-            return;
-        }
-
-        int pivot = partition(nums, left, right);
-        quickSort(nums, left, pivot - 1);
-        quickSort(nums, pivot + 1, right);
+class Solution {
+    public int[] sortArray(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+        return nums;
     }
 
-    private static int partition(int[] nums, int left, int right) {
-        int base = nums[left];        // 基准值
-        int i = left + 1;
-        int j = right;
-
+    public void quickSort(int[] nums, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int base = nums[start];
+        int i = start + 1;
+        int j = end;
+              // 为什么可以 i++ j-- ;不会产生覆盖吗
+        // 当 nums[i] >= base 时，nums[i] 交换 nums[j],由于 i 没有 ++，所以下一轮校验的就是换过来的 nums[j] 此时在num s[i] 位置上
         while (i <= j) {
             if (nums[i] <= base) {
                 i++;
@@ -1680,12 +1678,13 @@ public class QuickSort {
                 j--;
             }
         }
+        swap(nums, start, j);
 
-        swap(nums, left, j);          // 基准值归位
-        return j;                     // 返回基准位置
+        quickSort(nums, start, j - 1);
+        quickSort(nums, j + 1, end);
     }
 
-    private static void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
