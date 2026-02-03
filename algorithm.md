@@ -108,7 +108,13 @@ class Solution {
 
 ### 移除元素
 
-快慢指针，滑动窗口 最重要的一条原则：右指针扩张窗口，左指针在满足条件时收缩窗口
+快慢指针，滑动窗口 最重要的一条原则：**右指针扩张窗口，左指针在满足条件时收缩窗口**
+
+一定不要同时考虑 快指针 慢指针 在每一个条件怎么走，这样会搞得很乱
+
+分开考虑，快指针在什么之后扩张窗口，慢指针在什么时候缩小窗口
+
+Slow - fast 的区间是可以被覆盖的区间
 
 ```java
 class Solution {
@@ -134,6 +140,10 @@ class Solution {
 
 
 [27. 移除元素](https://leetcode.cn/problems/remove-element/)
+
+
+
+
 
 [26. 删除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/)
 
@@ -314,6 +324,33 @@ class Solution {
 2. 找到从右往左 第一个 nums[i] 大的元素  就找到 4
 3. 交换 结果为 [1,2,4,8,7,6,3]
 4. 反转右边找到的序列 ：[1,2,4,3,7,7,8] 为什么要反转，因为是升序序列，如果不反转，就不是下一个序列
+
+
+
+[88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)
+
+从nums1 的后面开始操作
+
+如果 nums2 耗尽了，nums1 可以原样设置，所以不需要管 nums1 的元素是否耗尽，只需要管 nums2 的元素是否耗尽，体现在代码中就是
+
+```java
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        while (j >= 0) {
+            if (i >= 0 && nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
+    }
+}
+```
+
+
 
 
 
@@ -1884,6 +1921,50 @@ class Solution {
             }
         }
         return candidate;
+    }
+}
+```
+
+
+
+[287. 寻找重复数](https://leetcode.cn/problems/find-the-duplicate-number/)
+
+- 数组长度 `n + 1`
+- 数字范围 `1 ~ n`
+- **只有一个重复的数**（可能出现多次）
+- **不能修改数组**
+- **O(1) 额外空间**
+
+ **标准解法：快慢指针（Floyd 判圈算法）**
+
+把数组看成一个 **隐式链表**：
+
+把数组看成这样： 下标 i  ──▶  nums[i]  也就是nnext(i) = nums[i];
+
+- 下标是「节点」
+- `nums[i]` 是「next 指针」
+
+```xml
+i -> nums[i]
+```
+
+```java
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+        // 1. 找到相遇点
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        // 2. 找到环入口
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
     }
 }
 ```
