@@ -866,9 +866,9 @@ Row 在参数中制定，col 在回溯中指定
 
 [22. 括号生成](https://leetcode.cn/problems/generate-parentheses/)
 
-需要提前剪枝，不能把所有符号都列出，再去 valid
+错误想法：把所有结果罗列出来。再进行 valid;复杂度爆炸
 
-提前剪枝的规则：先放 （，再放 ），通过回溯把所有情况列出来；通过 close < open 保证得出的结果是符合条件的
+解题思想：在任意前缀中：右括号数量 ≤ 左括号数量，总左括号数量 ≤ n，只要满足这两个约束，最终长度到 2n，就是一个合法结果。
 
 ```java
     private void backtrack(StringBuilder sb, int open, int close, int n) {
@@ -885,7 +885,7 @@ Row 在参数中制定，col 在回溯中指定
             sb.deleteCharAt(sb.length() - 1);
         }
 
-        // 还能放右括号（前提：右括号不超过左括号）
+        // 右括号不超过左括号
         if (close < open) {
             sb.append(')');
             backtrack(sb, open, close + 1, n);
