@@ -1177,38 +1177,12 @@ Dp[i] 的含义是：在该台阶往上跳完 1步或者 2步之后需要花费�
 
 [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
 
-> dp[i] 的含义：在 num[i] 的元素之前，最长的递增数组；nums[i] 可以接在任意 j < i 且 nums[j] < nums[i] 的位置后面
->
-> 初始化：
->
-> 状态转移方程：也就是 当 i 元素出现，需要遍历之前的所有状态，因为 当前 nums[i] 可以接在任何 nums[j] < nums[i] 的位置后面
->
-> 遍历顺序： for (int i = 0; i < n; i++) {
->                            for (int j = 0; j < i; j++)
+> dp[i]含义： dp[i] 的含义：0~i 区间内最长的 递增子数组
+> 初始化：dp数组初始化为1，必须；如果不初始化为1，会使用 0 参与 Math.max(dp[i], dp[j] + 1) 比较，出现错误
 
 错误写法：把当前的最长状态量往后移动是错误的，可能会漏掉一些组合
 
-```java
-class Solution {
-    public int lengthOfLIS(int[] nums) {
-        if(nums.length == 1) return 1;
-        int[] dp = new int[nums.length];
-        dp[0] = 1;
-        dp[1] = nums[1] > nums[0] ? 2 : 1;
-        int maxLIS = Math.max(dp[0],dp[1]);
-        for(int i = 2;i < nums.length;i++){
-            int reOne = nums[i] > nums[i-1] ? dp[i-1] + 1  : 1;
-            int reTwo = nums[i] > nums[i-2] ? dp[i-2] + 1  : 1;
-            dp[i] = Math.max(reOne,reTwo);
-            maxLIS = Math.max(maxLIS,dp[i]);
-        }
-        return maxLIS;
-    }
-}
-```
-
 > **dp[i] = 以 nums[i] 结尾的最长递增子序列长度**
->
 > nums[i] 可以接在任意 j < i 且 nums[j] < nums[i] 的位置后面
 
 正确解法：
@@ -1231,20 +1205,6 @@ class Solution {
         return res;
     }
 }
-
-// 解释
-for (int i = 0; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
-是否存在这种反例 [5, 4, 3, 6] nums[i] > nums[j] 这种比法是不是 把 8也算入在哪了
-5、4、3 都比 6 小，
-那是不是“全部都算进来了”？
-LIS 不累加分支
-它只选 一条最长路径  
-```
 
 
 
