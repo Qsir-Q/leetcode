@@ -47,7 +47,7 @@
    就是 [1,40] 的每个数的概率是平均的，而且可以操作压缩为[1-10] 但是[41-49] 不能
 
 
-7. [使用递归及非递归两种方式实现快速排序](https://leetcode-cn.com/problems/sort-an-array/)
+7. ~~[使用递归及非递归两种方式实现快速排序](https://leetcode-cn.com/problems/sort-an-array/)~~
    - `中等` 🔥 42次
    - 参考: [链接1](https://leetcode-cn.com/problems/sort-an-array/solution/pai-xu-shu-zu-by-leetcode-solution/), [链接2](https://leetcode-cn.com/problems/sort-an-array/solution/yong-fei-di-gui-de-kuai-su-pai-xu-fang-fa-by-yi-zh/)
 
@@ -62,17 +62,20 @@
    - `困难` 🔥 38次
    - 参考: [链接1](https://github.com/weitingyuk/LeetCode-Notes-Waiting#2021-02-18-%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE)
 
-11. [83. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+11. ~~[83. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)~~
    - `简单` 🔥 38次
 
-12. [112. 路径总和](https://leetcode-cn.com/problems/path-sum/)
+12. ~~[112. 路径总和](https://leetcode-cn.com/problems/path-sum/)~~
    - `简单` 🔥 38次
 
 13. [146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
    - `中等` 🔥 36次
 
-14. [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+14. ~~[215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)~~
    - `中等` 🔥 34次
+   **大顶堆并不会“自动拒绝”比堆顶小的元素。只要你调用 offer，任何值都会进堆，堆只负责“谁在堆顶”，不负责“谁该不该进”**
+   **PriorityQueue 的“初始容量 = k” ≠ “最多只能放 k 个元素”。它只是容量提示，不是大小限制**
+   
 
 15. 有序链表插入的时间复杂度是多少？
    - `简单` 🔥 32次
@@ -81,7 +84,7 @@
    - `简单` 🔥 30次
    - 参考: [链接1](https://algs4.cs.princeton.edu/34hash/)
 
-17. [141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
+17. ~~[141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)~~
    - `简单` 🔥 28次
 
 18. [4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
