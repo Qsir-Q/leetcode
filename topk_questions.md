@@ -94,20 +94,20 @@
    - `简单` 🔥 26次
    - 参考: [链接1](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
 
-20. [300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
+20. ~~[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)~~
    - `中等` 🔥 26次
 
 21. [232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
    - `简单` 🔥 26次
 
-22. [189. 旋转数组](https://leetcode-cn.com/problems/rotate-array/)
+22. ~~[189. 旋转数组](https://leetcode-cn.com/problems/rotate-array/)~~
    - `中等` 🔥 25次
 
 23. 常用的限流算法有哪些？简述令牌桶算法原理
    - `中等` 🔥 24次
    - 参考: [链接1](https://cloud.google.com/architecture/rate-limiting-strategies-techniques), [链接2](https://konghq.com/blog/how-to-design-a-scalable-rate-limiting-algorithm/)
 
-24. [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+24. ~~[5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)~~
    - `中等` 🔥 24次
 
 25. 简述你熟悉的几个排序算法以及优缺点
