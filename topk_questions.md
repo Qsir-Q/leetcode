@@ -9,22 +9,43 @@
 1. 10亿个数中如何高效地找到最大的一个数以及最大的第 K 个数
    - `困难` 🔥 55次
    - 参考: [链接1](https://github.com/weitingyuk/LeetCode-Notes-Waiting/blob/main/2021-02-17/TopK.md)
+  找最大的一个数：
+  空间优先：分治，分成N份，每一份找到最大的数，再一次性遍历
+  找最大的第K个数：
+  大顶堆
 
-2. [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
+
+2. ~~[53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)~~
    - `简单` 🔥 54次
 
-3. [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
+3. ~~[70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)~~
    - `简单` 🔥 48次
 
-4. [21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+4. ~~[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)~~
    - `简单` 🔥 46次
 
-5. AVL 树和红黑树有什么区别？
+5. ~~AVL 树和红黑树有什么区别？~~
    - `简单` 🔥 44次
    - 参考: [链接1](https://www.geeksforgeeks.org/red-black-tree-vs-avl-tree/)
+   AVL 树（自平衡二叉搜索树）：任一节点左右子树高度差 ≤ 1，高度严格受控，树矮，查找优先
+   红黑树：查找O(log n) 插入和删除时需要的旋转和调整更少，适合读少写多
 
-6. [470. 用 Rand7() 实现 Rand10()](https://leetcode-cn.com/problems/implement-rand10-using-rand7/)
+6. ~~[470. 用 Rand7() 实现 Rand10()](https://leetcode-cn.com/problems/implement-rand10-using-rand7/)~~
    - `中等` 🔥 44次
+   解题思想：构造出等概率分布的范围，然后对 10 取模
+   错误思想：直接使用 Rand7() * Rand7() 获得 [1,49],然后取模，这种方式错在 rand7() * rand7() 不是等概率分布
+   | 结果 | 出现方式                          |
+   | -- | ----------------------------- |
+   | 1  | (1,1) → 1 种                   |
+   | 6  | (1,6),(2,3),(3,2),(6,1) → 4 种 |
+   | 12 | (2,6),(3,4),(4,3),(6,2) → 4 种 |
+   | 49 | (7,7) → 1 种                   |
+   正确思想：
+   构建出等概率分布的范围：int num = (rand7() - 1) * 7 + rand7();
+   然后 使用 [1-40] 的范围，为什么：因为 [1-40] 概率是想等的，对10取模之后概率也想等，但是使用 [40-49] 区间的话，[0-40] 和 [40-49] 的概率不想等
+   在使用过程中，如果出现随机到 [41,49] 范围，进入下一轮随机
+   就是 [1,40] 的每个数的概率是平均的，而且可以操作压缩为[1-10] 但是[41-49] 不能
+
 
 7. [使用递归及非递归两种方式实现快速排序](https://leetcode-cn.com/problems/sort-an-array/)
    - `中等` 🔥 42次
