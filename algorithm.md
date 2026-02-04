@@ -72,34 +72,32 @@
 
 
 
-
 [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
 
-对于在任意i点上能接到的雨水，取决于 min(左边最高, 右边最高) - height[i]
-
-双指针 left right，向中间逼近；维护 leftMax rightMax 也就是左右两边最高的点；因为维持了左右两边的最大值，所以也就确定当前 left right 的左右边界，而当前高度与这边高度的最大值的差值就是当前可以接到的雨水；
-
-为什么不需要处理 当前点被淹没的情况，因为已经考虑了维护了最大值，最大值就是边界，水不能比边界还高；
-
-height[left] < height[right] 就是判断谁更矮，因为水只能到更矮的点
+错误解题思想：找到当前节点的左右节点，去计算当前节点能存多少水
 
 ```java
-class Solution {
     public int trap(int[] height) {
-        int left = 0, right = height.length - 1;
-        int leftMax = 0, rightMax = 0;
+        int left = 0;
+        int right = height.length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
         int ans = 0;
-        while (left < right) {
-            if (height[left] < height[right]) {
-                leftMax = Math.max(leftMax, height[left]);
+        while (left <= right){
+            // 当前节点能存多少水取决于 leftMax rightMax 较小的那一个; 也就是 Math.max( cur, Math.max(leftMax,rightMax))
+            // height[left] < height[right]，表示 left 这一侧的“可存水上限”已经确定了，不需要看右边了
+            // 因为 rightMax ≥ height[right] > height[left] 这一步就说明瓶颈在 height[left]
+            if(height[left] < height[right]){
+                leftMax = Math.max(leftMax,height[left]);
                 ans += leftMax - height[left];
                 left++;
-            } else {
-                rightMax = Math.max(rightMax, height[right]);
+            }else {
+                rightMax = Math.max(rightMax,height[right]);
                 ans += rightMax - height[right];
                 right--;
             }
         }
+        return ans;
     }
 }
 ```
