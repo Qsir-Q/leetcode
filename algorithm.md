@@ -1668,7 +1668,7 @@ class Solution {
         int base = nums[start];
         int i = start + 1;
         int j = end;
-              // 为什么可以 i++ j-- ;不会产生覆盖吗
+        // 为什么可以 i++ j-- ;不会产生覆盖吗
         // 当 nums[i] >= base 时，nums[i] 交换 nums[j],由于 i 没有 ++，所以下一轮校验的就是换过来的 nums[j] 此时在num s[i] 位置上
         while (i <= j) {
             if (nums[i] <= base) {
@@ -1678,8 +1678,9 @@ class Solution {
                 j--;
             }
         }
+        // while (i <= j) 退出时，一定是 left = right + 1; 而不是 left == right
         swap(nums, start, j);
-
+        // 所以真正的分界线时 right 也就是 这里的 j
         quickSort(nums, start, j - 1);
         quickSort(nums, j + 1, end);
     }
@@ -1698,60 +1699,46 @@ class Solution {
 ```java
 class Solution {
     public int[] sortArray(int[] nums) {
-        if(nums == null || nums.length <= 1){
-            return nums;
-        }
         quickSort(nums);
         return nums;
     }
 
-    private void quickSort(int[] nums){
-        Deque<int[]> stack = new ArrayDeque();
-        stack.push(new int[]{0,nums.length - 1});
+    private void quickSort(int[] nums) {
+        Deque<int[]> stack = new ArrayDeque<>();
+        stack.push(new int[]{0, nums.length - 1});
 
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             int[] range = stack.pop();
-            int left = range[0];
-            int right = range[1];
-            if(left >= right){
-                continue;
+            int l = range[0], r = range[1];
+            if (l >= r) continue;
+
+            int base = nums[l];
+            int left = l + 1;
+            int right = r;
+
+            while (left <= right) {
+                if (nums[left] <= base) {
+                    left++;
+                } else {
+                    swap(nums, left, right);
+                    right--;
+                }
             }
-            int pivot = partition(nums,left,right);
-            // 先压较大的区间(先进后出)，保证栈深度 O(log n)
-            // 先压大区间是为了控制栈的深度，如果先压小区间，那么在极端情况下，小区间很多很多，都压在栈底了
-            if (pivot - 1 - left > right - (pivot + 1)) {
-                stack.push(new int[]{left, pivot - 1});
-                stack.push(new int[]{pivot + 1, right});
-            } else {
-                stack.push(new int[]{pivot + 1, right});
-                stack.push(new int[]{left, pivot - 1});
-            }
+
+            // pivot 放到最终位置
+            swap(nums, l, right);
+
+            // 子区间
+            stack.push(new int[]{l, right - 1});
+            stack.push(new int[]{right + 1, r});
         }
     }
 
-    private int partition(int[] nums,int left,int right){
-        int pivot = nums[left];
-        int i = left + 1;
-        int j = right;
-        while(i <= j){
-            if(nums[i] <= pivot){
-                i++;
-            }else{
-                swap(nums,i,j);
-                j--;
-            }
-        }
-        swap(nums,left,j);
-        return j;
-    }
-    
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
     }
-
-
 }
 ```
 
