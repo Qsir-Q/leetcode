@@ -118,16 +118,16 @@
    - `困难` 🔥 22次
    - 参考: [链接1](https://zhuanlan.zhihu.com/p/79971028)
 
-27. [102. 二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
+27. ~~[102. 二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)~~
    - `中等` 🔥 21次
 
-28. [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)
+28. ~~[1. 两数之和](https://leetcode-cn.com/problems/two-sum/)~~
    - `简单` 🔥 20次
 
 29. 智力题 https://www.nowcoder.com/discuss/262595
    - `困难` 🔥 20次
 
-30. [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
+30. ~~[206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)~~
    - `简单` 🔥 18次
 
 31. [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
