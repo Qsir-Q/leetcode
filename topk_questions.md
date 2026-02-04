@@ -135,18 +135,21 @@
 
 32. [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
    - `简单` 🔥 18次
+   - 使用首尾双指针，不符合要求的字符跳过
+   - 不要先过一遍，把不符合的字符踢到，new出新字符串
 
 33. [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
    - `困难` 🔥 18次
 
-34. [100. 相同的树](https://leetcode-cn.com/problems/same-tree/)
+34. ~~[100. 相同的树](https://leetcode-cn.com/problems/same-tree/)~~
    - `简单` 🔥 18次
 
-35. [19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+35. ~~[19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)~~
    - `中等` 🔥 18次
 
 36. [面试题 04.04. 检查平衡性](https://leetcode-cn.com/problems/check-balance-lcci/)
    - `简单` 🔥 16次
+   - dfs前序，获取每个节点左右子树的最大深度，比较差值是否大于1
 
 37. [42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
    - `困难` 🔥 16次
