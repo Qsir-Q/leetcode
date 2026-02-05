@@ -154,14 +154,15 @@
 37. ~~[42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)~~
    - `困难` 🔥 16次
 
-38. [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
+38. ~~[136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)~~
    - `简单` 🔥 16次
 
 39. [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/)
    - `简单` 🔥 16次
 
-40. [234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
+40. ~~[234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)~~
    - `简单` 🔥 15次
+   - 快慢指针找到中点；中点到链尾反转，再判断
 
 41. [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
    - `中等` 🔥 14次
