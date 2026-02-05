@@ -262,11 +262,10 @@ class Solution {
 
 [153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
 
-核心思想：找到无序的那一段
+核心思想：找到无序的那一段 注意 
+1.  while (left < right)  因为使用 right = mid，所以这里的判断条件要改变为 <
+2.  right = mid 因为 mid也属于无序段的一部分
 
-注意 这里的 while (left < right) 和 right = mid
-
-为什么要 mid，因为 mid也属于无序段的一部分，而 left < right 是因为使用 right = mid，这里的判断条件要改变为 <
 
 ```java
 class Solution {
