@@ -1629,6 +1629,7 @@ class Solution {
         // while (i <= j) 退出时，一定是 left = right + 1; 而不是 left == right
         swap(nums, start, j);
         // 所以真正的分界线时 right 也就是 这里的 j
+        // 分界线一定是 j ; 不能使用 i
         quickSort(nums, start, j - 1);
         quickSort(nums, j + 1, end);
     }
