@@ -184,6 +184,8 @@
 
 44. [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
    - `简单` 🔥 14次
+   当 while(left <= right) 结束时，left > right,所以结果为 right
+   mid * mid 可能超过 int 的范围，需要使用 long
 
 45. [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
    - `简单` 🔥 12次
