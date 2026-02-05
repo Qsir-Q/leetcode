@@ -147,11 +147,11 @@
 35. ~~[19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)~~
    - `中等` 🔥 18次
 
-36. [面试题 04.04. 检查平衡性](https://leetcode-cn.com/problems/check-balance-lcci/)
+36. ~~[面试题 04.04. 检查平衡性](https://leetcode-cn.com/problems/check-balance-lcci/)~~
    - `简单` 🔥 16次
    - dfs前序，获取每个节点左右子树的最大深度，比较差值是否大于1
 
-37. [42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
+37. ~~[42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)~~
    - `困难` 🔥 16次
 
 38. [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
