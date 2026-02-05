@@ -1813,23 +1813,10 @@ bfs中每一个方式如果是新鲜橘子，那么新鲜橘子数量 -1
 
 [136. 只出现一次的数字](https://leetcode.cn/problems/single-number/)
 
-异或的本质就是：成对抵消，孤立留下
-
-> 异或满足交换律、结合律
-> a ^ b ^ a = (a ^ a) ^ b = 0 ^ b = b
-
-```java
-class Solution {
-    public int singleNumber(int[] nums) {
-       int sum = 0;
-        for (int num : nums) {
-            sum ^= num;
-        }
-        return sum;
-    }
-}
-```
-
+^ 按位异或： 不同为 1
+~ 按位取反：全部取反
+& 按位与 ：都为 1 才是 1
+a & ~b ： 保留 a 中 b 为 0 的位，把 b 为 1 的位清零
 
 
 [169. 多数元素](https://leetcode.cn/problems/majority-element/)
