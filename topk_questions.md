@@ -182,12 +182,12 @@
    2. 三数取中（Median-of-Three）
 
 
-44. [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
+44. ~~[69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)~~
    - `简单` 🔥 14次
    当 while(left <= right) 结束时，left > right,所以结果为 right
    mid * mid 可能超过 int 的范围，需要使用 long
 
-45. [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
+45. ~~[136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)~~
    - `简单` 🔥 12次
 
 46. 每秒有 5万个 QQ 号登陆，怎么找出每小时登录区间在 5-10次 的所有 QQ 号
@@ -196,7 +196,7 @@
 47. 如何找到无序数组的中位数？
    - `中等` 🔥 12次
 
-48. [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+48. ~~[200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)~~
    - `中等` 🔥 8次
 
 ---
@@ -229,11 +229,16 @@
 8. [146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
    - `中等` 🔥 30次
 
-9. [236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+9. ~~[236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)~~
    - `中等` 🔥 26次
 
 10. [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
    - `中等` 🔥 26次
+   preOrder 本质上是 [根节点，左子树，右子树]
+   inOrder 本质上是 [左子树，根节点，右子树]
+   每次取 preOrder[0] 作为根节点，然后获取 根节点 在 inorder 中的 位置 index; 就可以把 preOrder 和 inOrder 都切分开
+   其中 preOrder 切分为 [0] : 作为根节点 [1,index] 为 左子树  [index + 1,preOrder.length] 为右子树
+   inOrder 切分为 左子树：[0,index - 1] 根节点：[index] 右子树：[index+1,inOrder.length]
 
 11. 如何实现大数运算
    - `简单` 🔥 24次
