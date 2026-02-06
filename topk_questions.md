@@ -269,7 +269,10 @@
 
 20. [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
    - `中等` 🔥 16次
-
+   dp[i][j] 的含义 在 text1 的 [0,i] 和 text2 的 [0,j] 中最大的 最长 公共子序列 的长度
+   状态转移方程：dp[i][j] = dp[i - 1][j - 1] + 1;
+   因为一旦 text1[i-1] == text2[j-1]，这个字符被“选中”，它只能接在「前一个公共子序列」的后面，而这个“前一个公共子序列”只能来自 [0..i-2] 和 [0..j-2]，也就是左上角 dp[i-1][j-1]
+   
 21. 简述你熟悉的几个排序算法以及优缺点
    - `中等` 🔥 16次
    - 参考: [链接1](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/), [链接2](https://zhuanlan.zhihu.com/p/42586566)
