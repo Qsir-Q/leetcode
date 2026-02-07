@@ -9,10 +9,10 @@
 1. 10亿个数中如何高效地找到最大的一个数以及最大的第 K 个数
    - `困难` 🔥 55次
    - 参考: [链接1](https://github.com/weitingyuk/LeetCode-Notes-Waiting/blob/main/2021-02-17/TopK.md)
-  找最大的一个数：
-  空间优先：分治，分成N份，每一份找到最大的数，再一次性遍历
-  找最大的第K个数：
-  大顶堆
+    找最大的一个数：
+    空间优先：分治，分成N份，每一份找到最大的数，再一次性遍历
+    找最大的第K个数：
+    大顶堆
 
 
 2. ~~[53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)~~
@@ -40,11 +40,10 @@
    | 6  | (1,6),(2,3),(3,2),(6,1) → 4 种 |
    | 12 | (2,6),(3,4),(4,3),(6,2) → 4 种 |
    | 49 | (7,7) → 1 种                   |
-   正确思想：
-   构建出等概率分布的范围：int num = (rand7() - 1) * 7 + rand7();
-   然后 使用 [1-40] 的范围，为什么：因为 [1-40] 概率是想等的，对10取模之后概率也想等，但是使用 [40-49] 区间的话，[0-40] 和 [40-49] 的概率不想等
-   在使用过程中，如果出现随机到 [41,49] 范围，进入下一轮随机
-   就是 [1,40] 的每个数的概率是平均的，而且可以操作压缩为[1-10] 但是[41-49] 不能
+   
+    正确思想：构建出等概率分布的范围：int num = (rand7() - 1) * 7 + rand7(); 然后 使用 [1-40] 的范围；
+   
+     为什么：因为 [1-40] 概率是想等的，对10取模之后概率也想等，但是使用 [40-49] 区间的话，[0-40] 和 [40-49] 的概率不想等; 在使用过程中，如果出现随机到 [41,49] 范围，进入下一轮随机; 就是 [1,40] 的每个数的概率是平均的，而且可以操作压缩为[1-10] 但是[41-49] 不能
 
 
 7. ~~[使用递归及非递归两种方式实现快速排序](https://leetcode-cn.com/problems/sort-an-array/)~~
@@ -73,9 +72,9 @@
 
 14. ~~[215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)~~
    - `中等` 🔥 34次
-   **大顶堆并不会“自动拒绝”比堆顶小的元素。只要你调用 offer，任何值都会进堆，堆只负责“谁在堆顶”，不负责“谁该不该进”**
-   **PriorityQueue 的“初始容量 = k” ≠ “最多只能放 k 个元素”。它只是容量提示，不是大小限制**
-   
+      **大顶堆并不会“自动拒绝”比堆顶小的元素。只要你调用 offer，任何值都会进堆，堆只负责“谁在堆顶”，不负责“谁该不该进”**
+      **PriorityQueue 的“初始容量 = k” ≠ “最多只能放 k 个元素”。它只是容量提示，不是大小限制**
+
 
 15. 有序链表插入的时间复杂度是多少？
    - `简单` 🔥 32次
@@ -134,9 +133,28 @@
    - `困难` 🔥 18次
 
 32. [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
+
    - `简单` 🔥 18次
-   - 使用首尾双指针，不符合要求的字符跳过
-   - 不要先过一遍，把不符合的字符踢到，new出新字符串
+     解题思想：使用首尾双指针，不符合要求的字符跳过，不要先过一遍，把不符合的字符踢到，new出新字符串
+
+     ```java
+     class Solution {
+         public boolean isPalindrome(String s) {
+             int l = 0, r = s.length() - 1;
+             while (l < r) {
+                 while (l < r && !Character.isLetterOrDigit(s.charAt(l))) l++;
+                 while (l < r && !Character.isLetterOrDigit(s.charAt(r))) r--;
+                 if (Character.toLowerCase(s.charAt(l)) !=
+                         Character.toLowerCase(s.charAt(r))) {
+                     return false;
+                 }
+                 l++;
+                 r--;
+             }
+             return true;
+         }
+     }
+     ```
 
 33. [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
    - `困难` 🔥 18次
@@ -160,6 +178,21 @@
 39. [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/)
    - `简单` 🔥 16次
 
+     ```java
+     class Solution {
+         public String longestCommonPrefix(String[] strs) {
+             for (int i = 0; i < strs[0].length(); i++) {
+                 for (int j = 1; j < strs.length; j++) {
+                     if(strs[j].length() == 0 || strs[j].length() <= i || strs[j].charAt(i) != strs[0].charAt(i)){
+                         return strs[0].substring(0,i);
+                     }
+                 }
+             }
+             return strs[0];
+         }
+     }
+     ```
+
 40. ~~[234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)~~
    - `简单` 🔥 15次
    - 快慢指针找到中点；中点到链尾反转，再判断
@@ -173,19 +206,20 @@
 43. 快速排序的空间复杂度是多少？时间复杂度的最好最坏的情况是多少，有哪些优化方案？
    - `中等` 🔥 14次
    - 参考: [链接1](https://zhuanlan.zhihu.com/p/267133203)
-   | 项目    | 最好情况       | 平均情况       | 最坏情况  |
-   | ----- | ---------- | ---------- | ----- |
-   | 时间复杂度 | O(n log n) | O(n log n) | O(n²) |
-   | 空间复杂度 | O(log n)   | O(log n)   | O(n)  |
-   优化方案：
-   1. 随机选择基准（Randomized QuickSort）
-   2. 三数取中（Median-of-Three）
+| 项目    | 最好情况       | 平均情况       | 最坏情况  |
+| ----- | ---------- | ---------- | ----- |
+| 时间复杂度 | O(n log n) | O(n log n) | O(n²) |
+| 空间复杂度 | O(log n)   | O(log n)   | O(n)  |
+ 优化方案：
+
+1. 随机选择基准（Randomized QuickSort）
+2. 三数取中（Median-of-Three）
 
 
 44. ~~[69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)~~
    - `简单` 🔥 14次
-   当 while(left <= right) 结束时，left > right,所以结果为 right
-   mid * mid 可能超过 int 的范围，需要使用 long
+      当 while(left <= right) 结束时，left > right,所以结果为 right
+      mid * mid 可能超过 int 的范围，需要使用 long
 
 45. ~~[136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)~~
    - `简单` 🔥 12次
@@ -234,11 +268,11 @@
 
 10. [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
    - `中等` 🔥 26次
-   preOrder 本质上是 [根节点，左子树，右子树]
-   inOrder 本质上是 [左子树，根节点，右子树]
-   每次取 preOrder[0] 作为根节点，然后获取 根节点 在 inorder 中的 位置 index; 就可以把 preOrder 和 inOrder 都切分开
-   其中 preOrder 切分为 [0] : 作为根节点 [1,index] 为 左子树  [index + 1,preOrder.length] 为右子树
-   inOrder 切分为 左子树：[0,index - 1] 根节点：[index] 右子树：[index+1,inOrder.length]
+      preOrder 本质上是 [根节点，左子树，右子树]
+      inOrder 本质上是 [左子树，根节点，右子树]
+      每次取 preOrder[0] 作为根节点，然后获取 根节点 在 inorder 中的 位置 index; 就可以把 preOrder 和 inOrder 都切分开
+      其中 preOrder 切分为 [0] : 作为根节点 [1,index] 为 左子树  [index + 1,preOrder.length] 为右子树
+      inOrder 切分为 左子树：[0,index - 1] 根节点：[index] 右子树：[index+1,inOrder.length]
 
 11. 如何实现大数运算
    - `简单` 🔥 24次
@@ -269,10 +303,10 @@
 
 20. [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
    - `中等` 🔥 16次
-   dp[i][j] 的含义 在 text1 的 [0,i] 和 text2 的 [0,j] 中最大的 最长 公共子序列 的长度
-   状态转移方程：dp[i][j] = dp[i - 1][j - 1] + 1;
-   因为一旦 text1[i-1] == text2[j-1]，这个字符被“选中”，它只能接在「前一个公共子序列」的后面，而这个“前一个公共子序列”只能来自 [0..i-2] 和 [0..j-2]，也就是左上角 dp[i-1][j-1]
-   
+      dp[i][j] 的含义 在 text1 的 [0,i] 和 text2 的 [0,j] 中最大的 最长 公共子序列 的长度
+      状态转移方程：dp[i][j] = dp[i - 1][j - 1] + 1;
+      因为一旦 text1[i-1] == text2[j-1]，这个字符被“选中”，它只能接在「前一个公共子序列」的后面，而这个“前一个公共子序列”只能来自 [0..i-2] 和 [0..j-2]，也就是左上角 dp[i-1][j-1]
+
 21. 简述你熟悉的几个排序算法以及优缺点
    - `中等` 🔥 16次
    - 参考: [链接1](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/), [链接2](https://zhuanlan.zhihu.com/p/42586566)
